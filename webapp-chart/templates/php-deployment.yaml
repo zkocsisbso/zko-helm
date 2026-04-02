@@ -16,11 +16,12 @@ spec:
     spec:
       containers:
         - name: php
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 9000
-              name: php
+            - name: php
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
           env:
             - name: REDIS_HOST
               value: {{ .Values.redis.host | quote }}
@@ -31,3 +32,7 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.redis.passwordSecret }}
                   key: {{ .Values.redis.passwordKey }}
+          livenessProbe:
+            {{- toYaml .Values.livenessProbe | nindent 12 }}
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
