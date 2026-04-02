@@ -12,13 +12,13 @@ data:
       index index.php index.html;
 
       location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        try_files $uri $uri/ /main.php?$query_string;
       }
 
       location ~ \.php$ {
         include /etc/nginx/fastcgi_params;
         fastcgi_pass my-php-service:9000;
-        fastcgi_index index.php;
+        fastcgi_index main.php;
         fastcgi_param SCRIPT_FILENAME /var/www/html$fastcgi_script_name;
       }
     }
