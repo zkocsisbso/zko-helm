@@ -1,0 +1,16 @@
+global:
+  domain: zko-webapp.bso.cloud
+
+certificate:
+  enabled: true
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostname: zko-webapp.bso.cloud
+    annotations:
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      cert-manager.io/cluster-issuer: letsencrypt-production
+    tls: true
