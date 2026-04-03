@@ -24,19 +24,19 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 80
 
 resources: {}
 
 livenessProbe:
   httpGet:
     path: /
-    port: 8080
+    port: 80
 
 readinessProbe:
   httpGet:
     path: /
-    port: 8080
+    port: 80
 
 autoscaling:
   enabled: false
