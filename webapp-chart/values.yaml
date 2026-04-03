@@ -52,7 +52,7 @@ tolerations: []
 affinity: {}
 
 redis:
-  host: redis.training.svc.cluster.local
+  host: redis
   port: "26379"
   passwordSecret: redis
   passwordKey: redis-password
