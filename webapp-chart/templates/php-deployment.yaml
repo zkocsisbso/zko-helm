@@ -32,7 +32,7 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.redis.passwordSecret }}
                   key: {{ .Values.redis.passwordKey }}
-          livenessProbe:
-            {{- toYaml .Values.livenessProbe | nindent 12 }}
-          readinessProbe:
-            {{- toYaml .Values.readinessProbe | nindent 12 }}
+         # livenessProbe:
+         #   {{- toYaml .Values.livenessProbe | nindent 12 }}
+         # readinessProbe:
+         #   {{- toYaml .Values.readinessProbe | nindent 12 }}
