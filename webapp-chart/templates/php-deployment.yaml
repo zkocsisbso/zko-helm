@@ -15,11 +15,11 @@ spec:
         app: php
     spec:
       containers:
-        - name: php
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        - name: webapp
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: php
+            - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
           env:

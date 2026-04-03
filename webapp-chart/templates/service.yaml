@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: php
+      targetPort: http
       protocol: TCP
-      name: php
+      name: http
   selector:
     app: php
